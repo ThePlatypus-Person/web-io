@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.carousel-item {
+    transition: all 200ms;
+    width: calc(30vw - 100px);
+}
+
+.carousel-item button {
+    color: transparent;
+    transition: all 200ms;
+}
+
+.carousel-item:hover button {
+    color: white;
+    background-color: #240A2A;
+}
+
+.carousel-item:hover {
+    background-color: #B432D4;
+}
+
+#carousel {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#wrapper {
+    transition: all 0.5s;
+}
