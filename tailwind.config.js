@@ -1,7 +1,9 @@
-const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
+    content: [
+        "./src/**/*.{html,js}",
+        "./views/**/*.{html,js,ejs}"
+    ],
     theme: {
         colors: {
             'b': {
@@ -41,7 +43,6 @@ module.exports = {
                 90: '#3C1147',
                 100: '#240A2A',
             },
-            ...colors
         },
         extend: {
             backgroundColor: ['hover']
