@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/icon.png" rel="icon">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/pages/edit-account-form.css">
+
+    <title>Competition Info</title>
+</head>
+
+<body>
+    <button class="back">Back</button>
+    <form 
+        class="edit-account-form" 
+        action="<%= apiPath %>" 
+        method="post"
+    >
+        <h1>Edit Account</h1>
+
+        <div class="content">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= user.name %>" readonly>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="<%= user.email %>" readonly>
+            </div>
+
+            <div>
+                <label for="role">Role</label>
+                <select name="role" id="role">
+                    <% if (user.role === 'admin') { %>
+                        <option value="user">User</option>
+                        <option value="admin" selected>Admin</option>
+                    <% } else { %>
+                        <option value="user" selected>User</option>
+                        <option value="admin">Admin</option>
+                    <% } %>
+                </select>
+            </div>
+
+        </div>
+
+        <button type="submit">Save</button>
+        <button type="button">Delete Account</button>
+    </form>
+    
+    <script>
+        const backBtn = document.querySelector('button.back');
+        backBtn.addEventListener('click', () => {
+            window.location.href = '/dashboard/accounts';
+        });
+
+        const submitBtn = document.querySelector('button[type=submit]');
+        submitBtn.addEventListener('click', () => {
+            window.location.href = '/dashboard/accounts';
+        });
+
+        const deleteBtn = document.querySelector('button[type=button]');
+        deleteBtn.addEventListener('click', async () => {
+            const data = {
+                id: `<%= user.id %>`
+            }
+
+            try {
+                const res = await fetch('/users', {
+                   method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok)
+                    window.location.href = '/dashboard/accounts';
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    </script>
+</body>
+</html>

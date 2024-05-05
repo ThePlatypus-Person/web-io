@@ -1,0 +1,66 @@
+:root {
+    --light-bg: #D9D9D9;
+    --slate-800: #1e293b;
+    --purple-500: #a855f7;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --violet-500: #8b5cf6;
+    --violet-600: #7c3aed;
+    --violet-700: #6d28d9;
+    --red-500: #ef4444;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+}
+
+.user-compe {
+    align-self: center;
+    background-color: var(--light-bg);
+    color: var(--slate-800);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.user-compe > h2 {
+    font-size: 1.6rem;
+}
+
+.user-compe table,
+.user-compe th,
+.user-compe td {
+    border: solid var(--slate-800) 2px;
+    border-collapse: collapse;
+    padding: 5px 10px;
+}
+
+.removeBtn {
+    border: none;
+    padding: 7px 15px;
+    background-color: var(--purple-500);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    transition-duration: 200ms;
+}
+
+.removeBtn:hover { background-color: var(--purple-600); }
+.removeBtn:active { background-color: var(--purple-700); }
+
+button.addBtn {
+    border: none;
+    align-self: flex-start;
+    padding: 7px 15px;
+    border-radius: 50px;
+    margin-left: 30px;
+    background-color: var(--violet-500);
+    transition-duration: 200ms;
+}
+
+button.addBtn:hover { background-color: var(--violet-600); }
+button.addBtn:active { background-color: var(--violet-700); }
+
+#select-competition {
+    padding: 7px 15px;
+    border-radius: 30px;
+    border: solid 2px white;
+    background-color: transparent;
+    color: white;
+}

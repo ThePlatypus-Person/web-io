@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/icon.png" rel="icon">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/pages/competition-form.css">
+
+    <title>Competition Info</title>
+</head>
+
+<body>
+    <button class="back">Back</button>
+    <form 
+        class="competition-form" 
+        action="<%= competitionAPI %>" 
+        enctype="multipart/form-data" 
+        method="post"
+    >
+        <h1><%= title %></h1>
+
+        <div class="content">
+            <div class="text-inputs">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="path" value="<%= data.name %>">
+                </div>
+
+                <div>
+                    <label for="path">Path</label>
+                    <input type="text" name="path" id="path" value="<%= data.path %>">
+                </div>
+
+                <div>
+                    <label for="desc">Description</label>
+                    <textarea name="desc" id="desc" cols="30" rows="10" resize=false><%= data.desc %>
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="file-input">
+                <label for="img">Image</label>
+                <input type="file" accept="image/*" id="img" name="image">
+
+                <div class="img-area">
+                    <img src="/<%= data.img %>" alt="<%= data.name %>">
+                </div>
+            </div>
+
+        </div>
+
+        <% if (data.id) { %>
+            <button type="submit">Save Edit</button>
+            <button type="button">Delete</button>
+        <% } else { %>
+            <button type="submit">Save</button>
+        <% } %>
+    </form>
+    
+    <script>
+        const filePicker = document.querySelector('.file-input > input[type=file]');
+        const fileImage = document.querySelector('.img-area > img');
+
+        filePicker.addEventListener('change', (e) => {
+            const imgFile = e.target.files[0];
+
+            console.log(imgFile);
+            if (imgFile) {
+                fileImage.setAttribute('src', URL.createObjectURL(imgFile));
+            }
+        });
+
+        const backBtn = document.querySelector('button.back');
+        backBtn.addEventListener('click', () => {
+            window.location.href = '/dashboard/competitions';
+        });
+
+        const submitBtn = document.querySelector('button[type=submit]');
+        submitBtn.addEventListener('click', () => {
+            window.location.href = '/dashboard/competitions';
+        });
+
+        const deleteBtn = document.querySelector('button[type=button]');
+        deleteBtn.addEventListener('click', async () => {
+            const data = {
+                id: `<%= data.id %>`
+            }
+
+            try {
+                const res = await fetch('/competitions', {
+                   method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok)
+                    window.location.href = '/dashboard/competitions';
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    </script>
+</body>
+</html>

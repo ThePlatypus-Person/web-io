@@ -1,0 +1,18 @@
+<head>
+    <link rel="stylesheet" href="/css/partials/talk-shows.css">
+</head>
+<body>
+
+    <div id="talks">
+        <%- include('../components/title', { title: 'Talk Shows' }) %>
+
+        <div class='talks-list'>
+
+            <% list.forEach(function(data) { %>
+                <%- include('../components/talks-item', { data: data }) %>
+            <% }); %>
+
+        </div>
+    </div>
+
+</body>

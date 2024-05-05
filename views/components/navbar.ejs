@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="/css/components/navbar.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#hero">
+            <img src="logo.png" alt="logo">
+        </a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#competition">Competition</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+            <li><a href="#talks">Talk Show</a></li>
+        </ul>
+
+        <% if (isLoggedIn) { %>
+            <a href="/dashboard">
+                <button>Dashboard</button>
+            </a>
+        <% } else { %>
+            <a href="/login">
+                <button>Login</button>
+            </a>
+        <% } %>
+    </nav>
+
+</body>

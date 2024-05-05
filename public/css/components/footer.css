@@ -1,0 +1,139 @@
+:root {
+    --db-30: #858593;
+    --db-40: #5C5C6F;
+    --db-50: #34344B;
+    --db-60: #090921;
+}
+
+.footer {
+    background-color: var(--db-60);
+    width: 100%;
+    padding: 0.5rem 2rem;
+}
+
+.footer > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .main img {
+    height: 4rem;
+    aspect-ratio: auto;
+}
+
+.footer .main > h2 {
+    display: none;
+    scroll-margin: 5rem;
+    margin-bottom: 0.5rem;
+
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    letter-spacing: -0.025rem;
+    font-weight: 800;
+    color: white;
+}
+
+.footer .main > h3 {
+    display: none;
+    scroll-margin: 5rem;
+    margin-bottom: 1rem;
+
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.025rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer .main > div {
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.footer .main a {
+    transition-duration: 300ms;
+    color: var(--db-40);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.footer .main a:hover {
+    filter: brightness(2);
+}
+
+.footer .links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.footer .links > .media {
+    height: 2.5rem;
+    width: auto;
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+
+    background-color: var(--db-50);
+}
+
+.footer .links > .media > svg {
+    height: 100%;
+    color: var(--db-30);
+    transition-duration: 200ms;
+}
+
+.footer .links > .media > svg:hover {
+    filter: brightness(20);
+}
+
+.footer .links > .associate {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.footer .links > .associate > img {
+    height: 3rem;
+}
+
+.footer > h3 {
+    scroll-margin: 5rem;
+    margin-top: 2.5rem;
+
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.025rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .footer > div {
+        flex-direction: row;
+    }
+
+    .footer .main img {
+        height: 6rem;
+    }
+
+    .footer > h3 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .footer .main > h2 {
+        display: block;
+    }
+
+    .footer .main > h3 {
+        display: block;
+    }
+
+    .footer .links > .media {
+        height: 3rem;
+    }
+}

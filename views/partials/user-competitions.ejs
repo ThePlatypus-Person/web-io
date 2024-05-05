@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/partials/user-competitions.css">
+</head>
+<body>
+
+    <div class="add-section">
+        <button class="addBtn">Add Competition</button>
+        <select name="competition" id="select-competition">
+            <% names.forEach(function(item) { %>
+                <option value="<%= item.name %>"><%= item.name %></option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="user-compe">
+        <h2>My Competitions</h2>
+
+        <table>
+            <%
+                if (user.competitions) {
+            %>
+                <tr>
+                    <th>Competition</th>
+                    <th></th>
+                </tr>
+                <%
+                    user.competitions.forEach(function(item) { 
+                %>
+                <tr>
+                    <td><%= item %></td>
+                    <td>
+                        <button 
+                            class="removeBtn"
+                            value="<%= item %>"
+                        >Remove</button>
+                    </td>
+                </tr>
+            <% 
+                    }); 
+                }
+            %>
+        </table>
+    </div>
+    
+
+    <script>
+        const addBtn = document.querySelector('button.addBtn');
+        const removeBtn = document.querySelector('button.removeBtn');
+        const selectInput = document.querySelector('select#select-competition');
+
+        addBtn.addEventListener('click', async () => {
+            const user = {
+                id: `<%= user.id %>`,
+                name: `<%= user.name %>`,
+                email: `<%= user.email %>`
+            };
+
+            const data = {
+                name: selectInput.value,
+                member: user
+            };
+
+            try {
+                const res = await fetch('/competitions/members', {
+                   method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok)
+                    window.location.href = '/dashboard/user-competitions';
+            } catch (err) {
+                console.log(err);
+            }
+        });
+
+        removeBtn.addEventListener('click', async (e) => {
+            const user = {
+                id: `<%= user.id %>`,
+                name: `<%= user.name %>`,
+                email: `<%= user.email %>`
+            };
+
+            const data = {
+                name: e.target.value,
+                member: user
+            };
+
+            try {
+                const res = await fetch('/competitions/members', {
+                   method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok)
+                    window.location.href = '/dashboard/user-competitions';
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    </script>
+</body>
+</html>

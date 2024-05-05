@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" href="/css/partials/hero.css">
+</head>
+<body>
+
+    <div id="hero">
+        <img src="logo-big.png" alt="main-logo">
+        <div>
+            <h2>TechSphere</h2>
+            <h3>Unleash Your Creativity, Expand Your Journey</h3>
+
+            <% if (isLoggedIn) { %>
+                <a href="/dashboard">
+                    <button>Dashboard</button>
+                </a>
+            <% } else { %>
+                <a href="/login">
+                    <button>Join Now</button>
+                </a>
+            <% } %>
+        </div>
+    </div>
+    
+</body>

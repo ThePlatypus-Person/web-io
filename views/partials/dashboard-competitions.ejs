@@ -1,0 +1,18 @@
+<head>
+    <link rel="stylesheet" href="/css/partials/dashboard-competitions.css">
+</head>
+
+<body class="competition-body">
+    <a href="/dashboard/competitions/add"><button class="add">Add New Competition</button></a>
+    <div class="dashboard-competitions">
+        <% 
+            competitions.forEach(function(item) {
+        %>
+            <%- 
+                include('../components/competition-item', { data: item })
+            -%>
+        <% 
+            })
+        %>
+    </div>    
+</body>

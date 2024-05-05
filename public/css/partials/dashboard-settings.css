@@ -1,0 +1,58 @@
+:root {
+    --light-bg: #D9D9D9;
+    --slate-800: #1e293b;
+    --purple-500: #a855f7;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --violet-500: #8b5cf6;
+    --violet-600: #7c3aed;
+    --violet-700: #6d28d9;
+    --red-500: #ef4444;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+}
+
+.settings-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings {
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    border-radius: 10px;
+    background-color: var(--light-bg);
+    color: var(--slate-800);
+}
+
+.settings > h1 {
+    align-self: center;
+}
+
+.settings > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings button {
+    align-self: flex-start;
+    padding: 5px 20px ;
+    border: none;
+    border-radius: 30px;
+    transition-duration: 200ms;
+}
+
+.change-name { background-color: var(--violet-500); }
+.change-name:hover { background-color: var(--violet-600); }
+.change-name:active { background-color: var(--violet-700); }
+.change-password { background-color: var(--purple-500); }
+.change-password:hover { background-color: var(--purple-600); }
+.change-password:active { background-color: var(--purple-700); }
+.delete-account { background-color: var(--red-500); }
+.delete-account:hover { background-color: var(--red-600); }
+.delete-account:active { background-color: var(--red-700); }

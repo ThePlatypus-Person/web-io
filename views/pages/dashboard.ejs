@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Dashboard</title>
+    <link href="/icon.png" rel="icon">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+</head>
+
+<body>
+    <%- 
+        include('../components/dashboard-navbar', { 
+            links: navLinks
+        }) 
+    -%>
+    <div class="container">
+        <div class="top-bar">
+            <h2>
+                Hello, <%= user.name %>
+            </h2>
+            <button class='logout'>logout</button>
+        </div>
+
+        <% if (userList) { %>
+            <%- 
+                include('../partials/dashboard-accounts', { 
+                    userList: userList 
+                });
+            -%>
+        <% } else if (competitions) { %>
+            <%- 
+                include('../partials/dashboard-competitions', { 
+                    competitions: competitions
+                });
+            -%>
+        <% } else if (settings) { %>
+            <%- 
+                include('../partials/dashboard-settings', { 
+                    user: user
+                });
+            -%>
+        <% } else if (userCompetitions) { %>
+            <%- 
+                include('../partials/user-competitions', { 
+                    user: userCompetitions,
+                    names: competitionNames
+                });
+            -%>
+        
+        <% } else { %>
+            <h2 class="welcome">
+                Welcome to the dashboard
+            </h2>
+        <% } %>
+
+        <%- include('../components/dashboard-footer') -%>
+
+    </div>
+
+    <script>
+        const logoutBtn = document.querySelector('button');
+
+        logoutBtn.addEventListener('click', async () => {
+            const res = await fetch('/dashboard/logout', {
+                method: 'GET'
+            });
+            
+            if (res.ok)
+                window.location.href = '/';
+    
+            sessionStorage.removeItem('token');
+        });
+    </script>
+</body>
+
+</html>

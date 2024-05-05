@@ -1,0 +1,72 @@
+:root {
+    --button-purple2: #2A2949;
+    --button-pink: #CD76E2;
+    --footer-blue: #08092F;
+    --background-purple: #473764;
+    --foreground-light: #D9D9D9;
+    --searchbox-light: #7F6B8C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--background-purple);
+    font-family: 'Inter', sans-serif;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+}
+
+.container {
+    width: calc(100% - 220px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+h2.welcome {
+    font-size: 7rem;
+    text-align: right;
+    margin: 100px;
+}
+
+.logout {
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    align-self: flex-end;
+    margin: 10px 10px 0 0;
+    transition-duration: 300ms;
+}
+
+.logout:hover {
+    background-color: lightgray;
+}

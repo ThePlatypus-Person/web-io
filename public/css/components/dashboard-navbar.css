@@ -1,0 +1,45 @@
+:root {
+    --navbar-purple: #353157;
+    --button-purple: #15033F;
+}
+
+nav {
+    height: 100vh;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: var(--navbar-purple);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+}
+
+nav > a > img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px white solid;
+    padding-bottom: 10px;
+}
+
+nav > a {
+    margin-bottom: 20px;
+}
+
+.link {
+    margin-right: -30px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--button-purple);
+
+    border: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: white;
+
+    transition-duration: 300ms;
+}
+
+.link:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Register</title>
+    <link href="icon.png" rel="icon">
+
+    <link rel="stylesheet" href="/css/pages/register.css">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <img
+        class="background-image"
+        src="bg.png"
+        alt="background-image"
+    >
+    <main>
+        <a href="/">
+            <img
+                src="logo-text.png"
+                alt="IO Fest Icon"
+            >
+        </a>
+
+        <div class="register-section">
+            <h3>Create an Account</h3>
+            <p>Please, Welcome to I/O Festival!</p>
+
+            <form
+                action="/register"
+                method="POST"
+            >
+                <div class="email-area">
+                    <div>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Username"
+                            value=""
+                        >
+                        <span></span>
+                    </div>
+
+                    <div>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            pattern="^\S+@\S+\.\S+$"
+                            value=""
+                        >
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="password-area">
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value=""
+                    >
+
+                    <input
+                        type="password"
+                        name="confirm-password"
+                        placeholder="Confirm Password"
+                        value=""
+                    >
+                    <span></span>
+                </div>
+
+                <div class="form-check">
+                    <input 
+                        type="checkbox" 
+                        name="remember"
+                        value="true" 
+                        id="acceptTerms"
+                    >
+                    <label for="acceptTerms">
+                        I agree and accept the terms and conditions
+                    </label>
+                </div>
+
+                <button 
+                    id="create-account"
+                    class="register-btn"
+                    type="submit"
+                    disabled
+                >
+                    Create Account
+                </button>
+
+                <div class="have-account">
+                    <p>
+                        Already have an account? 
+                        <a href="./login">Login</a>
+                    </p>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script>
+        const usernameInput = document.querySelector('input[name="name"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const passInput = document.querySelector('input[name="password"]');
+        const confirmPassInput = document.querySelector('input[name="confirm-password"]');
+        const termsCondition = document.querySelector('#acceptTerms');
+        const registerBtn = document.querySelector('#create-account');
+        registerBtn.disabled = true;
+
+        const usernameLabel = document.querySelector('input[name="name"] + span');
+        const emailLabel = document.querySelector('input[name="email"] + span');
+        const passLabel = document.querySelector('input[name="confirm-password"] + span');
+
+        function setButtonStatus() {
+            const user = validUsername();
+            const email = validEmail();
+            const pass = validPassword();
+            const agree = termsCondition.checked;
+
+            if (user && email && pass && agree)
+                registerBtn.disabled = false;
+            else 
+                registerBtn.disabled = true;
+        }
+
+        function validUsername() {
+            const empty = usernameInput.value === '';
+            const validLength = usernameInput.value.length >= 8;
+
+            const noSpace = usernameInput.value !== '' 
+                && !/\s/g.test(usernameInput.value);
+
+            if (empty) {
+                usernameLabel.textContent = '';
+            } else if (!validLength) {
+                usernameLabel.textContent = 'At least 8 characters.';
+            } else if (!noSpace) {
+                usernameLabel.textContent = 'Must not have white space.';
+            } else {
+                usernameLabel.textContent = '';
+                return true;
+            }
+
+            return false;
+        }
+        
+        function validEmail() {
+            const empty = emailInput.value === '';
+            const valid = emailInput.checkValidity();
+
+            if (empty) {
+                emailLabel.textContent = '';
+            } else if (valid) {
+                emailLabel.textContent = '';
+                return true;
+            } else {
+                emailLabel.textContent = 'Invalid Email.'
+            }
+
+            return false;
+        }
+
+        function validPassword() {
+            const empty = passInput.value === ''
+                || passInput.value === null;
+
+            const validLength = passInput.value.length >= 8;
+
+            const validConfirm = 
+                passInput.value === confirmPassInput.value;
+
+            if (empty) {
+                passLabel.textContent = '';
+            } else if (!validLength) {
+                passLabel.textContent = 'At least 8 characters.';
+            } else if (!validConfirm && confirmPassInput.value !== '') {
+                passLabel.textContent = 'Password does not match.';
+            } else {
+                passLabel.textContent = '';
+                return true;
+            }
+
+            return false;
+        }
+
+        const inputs = [usernameInput, emailInput, passInput, confirmPassInput, termsCondition];
+
+        inputs.forEach(item => item.addEventListener('input', setButtonStatus));
+
+
+        registerBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const data = {
+                name: usernameInput.value,
+                email: emailInput.value,
+                password: passInput.value
+            };
+
+            const res = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (res.ok) {
+                // const json = await res.json();
+                // sessionStorage.setItem('token', json.token);
+                window.location.href = '/dashboard';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

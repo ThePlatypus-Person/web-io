@@ -1,0 +1,47 @@
+.dashboard-competitions {
+    height: 100%;
+
+    display: grid;
+    justify-items: center;
+    align-items: stretch;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    overflow: auto;
+}
+
+@media (min-width: 640px) {
+    #competition {
+        padding: 2.5rem 0;
+    }
+
+    .dashboard-competitions {
+        padding: 0 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .dashboard-competitions {
+        padding: 0 5rem;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-competitions {
+        padding: 0 16rem;
+    }
+}
+
+.add {
+    align-self: flex-start;
+    padding: 10px;
+    border: none;
+    margin-left: 50px;
+    border-radius: 7px;
+
+    font-weight: 600;
+    color: black;
+    transition-duration: 200ms;
+}

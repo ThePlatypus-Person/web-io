@@ -1,0 +1,55 @@
+:root {
+    --db-100: #020208;
+    --b-10: #CFD3DE;
+    --b-30: #8692AD;
+    --b-vibrant: #1736D5;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--db-100);
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    text-align: center;
+}
+
+.info-card > h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.info-card > p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.info-card > .image-wrapper > img {
+    width: 300px;
+    height: auto;
+}

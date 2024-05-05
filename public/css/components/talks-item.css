@@ -1,0 +1,53 @@
+.talks-item {
+    flex: 1;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    backdrop-filter: blur(24px);
+    transition-duration: 500ms;
+    border-radius: 0.5rem;
+    border: solid white 1px;
+}
+
+.talks-item:hover {
+    backdrop-filter: blur(64px);
+}
+
+.talks-item > img {
+    width: 100%;
+}
+
+.talks-item > h3 {
+    margin-bottom: 0.5rem;
+
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+
+}
+
+.talks-item h4 {
+    scroll-margin: 5rem;
+
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+        letter-spacing: -0.025rem;
+    font-weight: 600;
+}
+
+@media (min-width: 640px) {
+    .talks-item > h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        letter-spacing: -0.025rem;
+        font-weight: 600;
+    }
+
+    .talks-item h4 {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+    
+}

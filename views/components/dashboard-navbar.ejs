@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="/css/components/dashboard-navbar.css">
+</head>
+<body>
+
+    <nav>
+        <a href='/'>
+            <img src="/logo-side-text.png" alt="logo">
+        </a>
+
+        <%
+            links.forEach(function(item) {
+        %>
+            <a class="link" href="<%= item.path %>">
+                <%= item.name %>
+            </a> 
+        <%
+            });
+        %>
+    </nav>
+
+</body>

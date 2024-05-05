@@ -1,0 +1,16 @@
+<head>
+    <link rel="stylesheet" href="/css/partials/competition.css">
+</head>
+<body>
+
+    <div id="competition">
+        <%- include('../components/title', { title: 'Competition List' }) %>
+
+        <div class="competition-list">
+            <% list.forEach(function(item) { %>
+                <%- include('../components/competition-item', { data: item }) -%>
+            <% }); %>
+        </div>
+    </div>
+    
+</body>
